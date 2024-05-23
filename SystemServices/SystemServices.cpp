@@ -2222,7 +2222,7 @@ namespace WPEFramework {
          */
         void SystemServices::onFirmwareUpdateStateChange(int newState)
         {
-            if (newState != m_FwUpdateState_LatestEvent) {
+         //   if (newState != m_FwUpdateState_LatestEvent) {
                 JsonObject params;
                 const FirmwareUpdateState firmwareUpdateState = (FirmwareUpdateState)newState;
                 m_FwUpdateState_LatestEvent=(int)firmwareUpdateState;
@@ -2230,9 +2230,9 @@ namespace WPEFramework {
                 LOGINFO("New firmwareUpdateState = %d\n", (int)firmwareUpdateState);
                 sendNotify(EVT_ONFIRMWAREUPDATESTATECHANGED, params);
 
-            } else {
-                LOGINFO("Got event with same irmwareUpdateState = %d\n", newState);
-            }
+           // } else {
+             //   LOGINFO("Got event with same irmwareUpdateState = %d\n", newState);
+            //}
         }
 
         /***
