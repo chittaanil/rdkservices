@@ -3123,6 +3123,7 @@ namespace WPEFramework {
 
         uint32_t DisplaySettings::setVolumeLevel(const JsonObject& parameters, JsonObject& response)
         {
+		LOGWARN("Test : %s -- start \n", __func__);
                 //LOGINFOMETHOD();
                 returnIfParamNotFound(parameters, "volumeLevel");
                 string sLevel = parameters["volumeLevel"].String();
@@ -3142,6 +3143,7 @@ namespace WPEFramework {
                         device::AudioOutputPort aPort = device::Host::getInstance().getAudioOutputPort(audioPort);
 			current_volumelevel = (int)aPort.getLevel();
                         aPort.setLevel(level);
+			LOGWARN("Test : current_volumelevel : %d Level : %d \n",current_volumelevel,(int)level);
                         if(current_volumelevel != (int)level)
                         {
                             JsonObject params;
@@ -3155,6 +3157,8 @@ namespace WPEFramework {
                         LOG_DEVICE_EXCEPTION2(audioPort, sLevel);
                         success = false;
                 }
+
+		LOGWARN("Test : %s -- END \n", __func__);
                 returnResponse(success);
         }
 
